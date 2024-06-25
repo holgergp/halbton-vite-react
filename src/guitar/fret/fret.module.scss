@@ -1,0 +1,95 @@
+.fret {
+  width: 2.5em;
+  height: 1.25em;
+  border-right-color: gray;
+  border-right-width: 0.125em;
+  border-right-style: solid;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  &:first-child {
+    border-right-color: gray;
+    border-right-width: 0.625em;
+    border-right-style: solid;
+  }
+  &__fretName {
+    color: gray;
+  }
+  @media (max-width: 480px) {
+    width: 1em;
+    border-right-width: 0.05em;
+  }
+}
+
+@mixin noteBubble {
+  position: absolute;
+  background: lightblue;
+  opacity: 1;
+  border-radius: 50%;
+  width: 0.625em;
+  height: 0.625em;
+  top: 50%;
+  left: 50%;
+  margin: -0.313em 0 0 -0.313em;
+  @media (max-width: 480px) {
+    width: 0.4em;
+    height: 0.4em;
+    margin: -0.2em 0 0 -0.2em;
+    border-right-width: 0.05em;
+  }
+}
+
+.note {
+  &__offset {
+    @include noteBubble;
+    opacity: 1;
+    background: lightblue;
+    transition: 0.3s ease-in;
+  }
+  &__root {
+    @include noteBubble;
+    background: lightcoral;
+    opacity: 1;
+    animation: wiggle 0.8s ease 1;
+    @keyframes wiggle {
+      0% {
+        top: 50%;
+        margin-top: -0.313em;
+      }
+      50% {
+        top: 0%;
+        margin-top: 0;
+      }
+      100% {
+        top: 50%;
+        margin-top: -0.313em;
+      }
+    }
+  }
+  &__notVisible {
+    @include noteBubble;
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+  }
+}
+
+.notename {
+  &--notesInvisible {
+    opacity: 0;
+    cursor: default;
+    transition: opacity 0.25s ease-out;
+    &:hover {
+      opacity: 1;
+    }
+    @media (max-width: 480px) {
+      font-size: 0.5em;
+    }
+  }
+  &--notesVisible {
+    @media (max-width: 480px) {
+      font-size: 0.5em;
+    }
+    opacity: 1;
+    transition: opacity 0.4s ease-in;
+  }
+}

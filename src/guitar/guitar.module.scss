@@ -1,0 +1,18 @@
+.guitar {
+  padding-top: 0.625em;
+  padding-left: 0.625em;
+  width: 53.125em;
+  font-size: 100%;
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
+}
+
+footer {
+  @media (max-width: 480px) {
+    display: none;
+  }
+  padding-top: 0.625em;
+  font-size: smaller;
+  text-align: center;
+}
