@@ -1,30 +1,30 @@
 const selectEWith3Offset = () => {
   const selectRootNote = '[class*="tuner--rootNote"]';
-  cy.get(selectRootNote).select('E');
+  cy.get(selectRootNote).select("E");
   const selectOffset = '[class*="tuner--offset"]';
-  const offset = '3';
+  const offset = "3";
   cy.get(selectOffset).type(`{selectall}{backspace}${offset}`);
 };
 
-describe('Tuner works', () => {
+describe("Tuner works", () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit("/");
   });
-  it('Select Offsetnote', () => {
+  it("Select Offsetnote", () => {
     selectEWith3Offset();
 
     const selectOffsetNote = '[class*="display"]';
-    return cy.get(selectOffsetNote).should('contain', 'G');
+    return cy.get(selectOffsetNote).should("contain", "G");
   });
 });
 
-describe('Fretboard works', () => {
+describe("Fretboard works", () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit("/");
   });
-  it('Select Rootnote and Offsetnote', () => {
+  it("Select Rootnote and Offsetnote", () => {
     selectEWith3Offset();
-    cy.get('[class*="_note__root"]').should('have.length', 14);
-    cy.get('[class*="_note__offset"]').should('have.length', 13);
+    cy.get('[class*="_note__root"]').should("have.length", 14);
+    cy.get('[class*="_note__offset"]').should("have.length", 13);
   });
 });
