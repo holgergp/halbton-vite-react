@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import {
   fiddleWithFretboard,
   fiddleWithOffset,
   fiddleWithOffsetNote,
-} from '../modulator/knobs';
+} from "../modulator/knobs";
 import {
   notec,
   standardTuningInfo,
   halftones,
   tunings,
-} from '../modulator/modulator';
-import { Fretboard } from '../modulator/types';
-import Display from './display';
-import styles from './tuner.module.scss';
+} from "../modulator/modulator";
+import { Fretboard } from "../modulator/types";
+import Display from "./display";
+import styles from "./tuner.module.scss";
 
 interface Props {
   setFretboard: (fretboard: Fretboard) => void;
@@ -20,7 +20,7 @@ interface Props {
 
 const TunerComponent = ({ setFretboard }: Props): JSX.Element => {
   const [rootnoteName, setRootnoteName] = useState(notec.targetName);
-  const [offset, setOffset] = useState('0');
+  const [offset, setOffset] = useState("0");
   const [tuningName, setTuningName] = useState(standardTuningInfo.name);
   const [offsetNote, setOffsetNote] = useState(notec);
 
@@ -31,9 +31,9 @@ const TunerComponent = ({ setFretboard }: Props): JSX.Element => {
         e.preventDefault();
       }}
     >
-      <span className={styles['tuner--tunerText']}>Wenn ich vom Grundton</span>
+      <span className={styles["tuner--tunerText"]}>Wenn ich vom Grundton</span>
       <select
-        className={styles['tuner--rootNote']}
+        className={styles["tuner--rootNote"]}
         value={rootnoteName}
         onChange={(evt) => {
           const newRootNoteName = evt.target.value;
@@ -42,7 +42,7 @@ const TunerComponent = ({ setFretboard }: Props): JSX.Element => {
             newRootNoteName,
             offset,
             tuningName,
-            setFretboard
+            setFretboard,
           );
           fiddleWithOffsetNote(newRootNoteName, offset, setOffsetNote);
         }}
@@ -55,7 +55,7 @@ const TunerComponent = ({ setFretboard }: Props): JSX.Element => {
       </select>
 
       <input
-        className={styles['tuner--offset']}
+        className={styles["tuner--offset"]}
         type="number"
         value={offset}
         onChange={(evt) => {
@@ -65,16 +65,16 @@ const TunerComponent = ({ setFretboard }: Props): JSX.Element => {
             rootnoteName,
             newOffset,
             tuningName,
-            setFretboard
+            setFretboard,
           );
           fiddleWithOffsetNote(rootnoteName, newOffset, setOffsetNote);
         }}
       />
-      <span className={styles['tuner--tunerText']}>
+      <span className={styles["tuner--tunerText"]}>
         Schritte weitergehe und
       </span>
       <select
-        className={styles['tuner--tuning']}
+        className={styles["tuner--tuning"]}
         value={tuningName}
         onChange={(evt) => {
           const newTuningName = evt.target.value;
@@ -83,7 +83,7 @@ const TunerComponent = ({ setFretboard }: Props): JSX.Element => {
             rootnoteName,
             offset,
             newTuningName,
-            setFretboard
+            setFretboard,
           );
         }}
       >
@@ -93,7 +93,7 @@ const TunerComponent = ({ setFretboard }: Props): JSX.Element => {
           </option>
         ))}
       </select>
-      <span className={styles['tuner--tunerText']}>
+      <span className={styles["tuner--tunerText"]}>
         Tuning verwende, lande ich beim
       </span>
       <Display offsetNote={offsetNote} />

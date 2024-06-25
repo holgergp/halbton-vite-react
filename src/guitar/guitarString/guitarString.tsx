@@ -1,7 +1,6 @@
-import React from 'react';
-import FretComponent from '../fret/fret';
-import { GuitarString } from '../modulator/types';
-import styles from './guitarString.module.scss';
+import FretComponent from "../fret/fret";
+import { GuitarString } from "../modulator/types";
+import styles from "./guitarString.module.scss";
 
 interface Props {
   string: GuitarString;

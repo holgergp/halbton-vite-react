@@ -1,6 +1,5 @@
-import React from 'react';
-import { Note } from '../modulator/types';
-import styles from './tuner.module.scss';
+import { Note } from "../modulator/types";
+import styles from "./tuner.module.scss";
 
 interface Props {
   offsetNote: Note;

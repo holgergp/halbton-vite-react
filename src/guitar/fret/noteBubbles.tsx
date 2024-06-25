@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './fret.module.scss';
+import styles from "./fret.module.scss";
 
 interface Props {
   offsetNote?: boolean;
@@ -12,11 +11,11 @@ const NoteBubbleComponent = ({
 }: Props) => {
   let noteClass: string;
   if (rootNote) {
-    noteClass = 'note__root';
+    noteClass = "note__root";
   } else if (offsetNote) {
-    noteClass = 'note__offset';
+    noteClass = "note__offset";
   } else {
-    noteClass = 'note__notVisible';
+    noteClass = "note__notVisible";
   }
   return (
     <div className="note">

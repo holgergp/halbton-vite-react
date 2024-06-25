@@ -1,19 +1,19 @@
-import { Fret, Fretboard, Note, Tuning, TuningInfo } from './types';
+import { Fret, Fretboard, Note, Tuning, TuningInfo } from "./types";
 
 const NUMBER_OF_FRETS = 25;
 
-export const notec = { name: 'C', targetName: 'C' };
-export const noted = { name: 'D', targetName: 'D' };
-export const notecsharp = { name: 'C#', targetName: 'C#/D\u266D' };
-export const notedsharp = { name: 'D#', targetName: 'D#/E\u266D' };
-export const notee = { name: 'E', targetName: 'E' };
-export const notef = { name: 'F', targetName: 'F' };
-export const notefsharp = { name: 'F#', targetName: 'F#/G\u266D' };
-export const noteg = { name: 'G', targetName: 'G' };
-export const notegsharp = { name: 'G#', targetName: 'G#/A\u266D' };
-export const notea = { name: 'A', targetName: 'A' };
-export const noteasharp = { name: 'A#', targetName: 'A#/H\u266D' };
-export const noteb = { name: 'B', targetName: 'B/H' };
+export const notec = { name: "C", targetName: "C" };
+export const noted = { name: "D", targetName: "D" };
+export const notecsharp = { name: "C#", targetName: "C#/D\u266D" };
+export const notedsharp = { name: "D#", targetName: "D#/E\u266D" };
+export const notee = { name: "E", targetName: "E" };
+export const notef = { name: "F", targetName: "F" };
+export const notefsharp = { name: "F#", targetName: "F#/G\u266D" };
+export const noteg = { name: "G", targetName: "G" };
+export const notegsharp = { name: "G#", targetName: "G#/A\u266D" };
+export const notea = { name: "A", targetName: "A" };
+export const noteasharp = { name: "A#", targetName: "A#/H\u266D" };
+export const noteb = { name: "B", targetName: "B/H" };
 
 export const halftones = [
   notec,
@@ -57,11 +57,11 @@ export const dropc: Tuning = {
   6: notec,
 };
 
-export const standardTuningInfo = { name: 'Standard', tuning: standardTuning };
+export const standardTuningInfo = { name: "Standard", tuning: standardTuning };
 export const tunings: TuningInfo[] = [
   standardTuningInfo,
-  { name: 'DropD', tuning: dropd },
-  { name: 'DropC', tuning: dropc },
+  { name: "DropD", tuning: dropd },
+  { name: "DropC", tuning: dropc },
 ];
 
 const getTuningForName = (tuningName: string): Tuning => {
@@ -76,7 +76,7 @@ const markNotesOnAString = (
   stringNumber: number,
   rootNoteName: string,
   offset: number,
-  tuning: Tuning
+  tuning: Tuning,
 ): Fret[] => {
   const offsetNote = findOffsetNote(rootNoteName, offset);
   return fretboardWith(tuning)[stringNumber].frets.map(
@@ -85,14 +85,14 @@ const markNotesOnAString = (
       offsetNote: fret.targetName === offsetNote.targetName,
       rootNote: fret.targetName === rootNoteName,
       fretnumber,
-    })
+    }),
   );
 };
 
 export const markNotesOnTheFretboard = (
   rootNoteName: string,
   offset: number,
-  tuningName: string
+  tuningName: string,
 ): Fretboard => {
   const tuning = getTuningForName(tuningName);
   return stringNumbers(tuning).reduce<Fretboard>(
@@ -103,7 +103,7 @@ export const markNotesOnTheFretboard = (
       };
       return fretboard;
     },
-    {} as Fretboard
+    {} as Fretboard,
   );
 };
 //JS modulo fn gives negative values for negative inputs ...
@@ -113,7 +113,7 @@ const mod = (a: number, b: number): number => {
 
 export const findOffsetNote = (rootNoteName: string, offset: number): Note => {
   const rootNoteIndex = halftones.findIndex(
-    (t: Note) => t.targetName === rootNoteName
+    (t: Note) => t.targetName === rootNoteName,
   );
   const targetNoteIndex = mod(rootNoteIndex + offset, halftones.length);
   return halftones[targetNoteIndex];
@@ -123,12 +123,12 @@ const notesOnAString = (stringNumber: number, tuning: Tuning): Note[] => {
   const startNote = tuning[stringNumber];
   const fretNumberArray = [...Array(NUMBER_OF_FRETS).keys()];
   const noteIndexNormalized = halftones.findIndex(
-    (ton: Note) => ton === startNote
+    (ton: Note) => ton === startNote,
   );
 
   return fretNumberArray.map(
     (i: number) => halftones[(noteIndexNormalized + i) % halftones.length],
-    fretNumberArray
+    fretNumberArray,
   );
 };
 

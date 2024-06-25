@@ -1,8 +1,7 @@
-import React from 'react';
-import { Fret } from '../modulator/types';
-import NoteBubble from './noteBubbles';
-import NoteName from './noteName';
-import styles from './fret.module.scss';
+import { Fret } from "../modulator/types";
+import NoteBubble from "./noteBubbles";
+import NoteName from "./noteName";
+import styles from "./fret.module.scss";
 
 interface Props {
   fret: Fret;

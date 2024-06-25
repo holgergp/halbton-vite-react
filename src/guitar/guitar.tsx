@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import {
   markNotesOnTheFretboard,
   notec,
   standardTuningInfo,
-} from './modulator/modulator';
-import styles from './guitar.module.scss';
+} from "./modulator/modulator";
+import styles from "./guitar.module.scss";
 
-import Tuner from './tuner/tuner';
-import Fretboard from './fretboard/fretboard';
+import Tuner from "./tuner/tuner";
+import Fretboard from "./fretboard/fretboard";
 
 const GuitarComponent = (): JSX.Element => {
   const [fretboard, setFretboard] = useState(
-    markNotesOnTheFretboard(notec.targetName, 0, standardTuningInfo.name)
+    markNotesOnTheFretboard(notec.targetName, 0, standardTuningInfo.name),
   );
 
   return (

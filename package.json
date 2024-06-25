@@ -6,35 +6,44 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "test": "jest",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "tsc": "node_modules/.bin/tsc",
+    "lint:fix": "./node_modules/.bin/prettier --single-quote --write \"+(src|cypress)/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "prettier-check": "prettier --check \"+(src|cypress)/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "check": "run-s prettier-check tsc lint test",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
-    "react-hotkeys-hook": "^5.0.0-1",
-    "sass": "^1.53.0",
-    "sass-loader": "^13.0.2",
     "cypress": "^13.7.2",
     "prettier": "^3.3.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-hotkeys-hook": "^5.0.0-1",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@types/jest": "^26.0.23",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.1.9",
+    "@types/jest": "^26.0.23",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^8.57.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "npm-run-all": "^4.1.5",
     "typescript": "^5.2.2",
     "vite": "^5.3.1",
-    "eslint-config-prettier": "^8.3.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0"
+    "vitest": "^1.6.0"
   }
 }
